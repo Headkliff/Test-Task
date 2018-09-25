@@ -1,0 +1,114 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic);
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css);
+
+/* line 3, ../sass/main.scss */
+html, body {
+  background: #eaeff0;
+  font-family: 'Lato', 'Helvetica', 'Arial', san-serif;
+  color: #565656;
+}
+
+/**
+ * Typography
+ */
+/* line 13, ../sass/main.scss */
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+  color: #425b61;
+}
+
+/* line 18, ../sass/main.scss */
+h1 {
+  font-size: 36px;
+}
+
+/* line 22, ../sass/main.scss */
+h2 {
+  font-size: 30px;
+}
+
+/* line 26, ../sass/main.scss */
+h3 {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+/* line 31, ../sass/main.scss */
+h4 {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+#masthead {
+  background: #fff;
+  z-index: 999;
+  position: fixed; 
+  top: 0px;
+  width:100%; 
+  height: 90px;
+}
+
+#masthead #primary-navigation {
+  float: left;
+  margin-left: 20px;
+  height: 90px;
+}
+
+
+#masthead #primary-navigation > ul > li > a {
+  line-height: 90px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  display: block;
+  border-left: 1px solid #efefef;
+  border-right: 1px solid #efefef;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+
+#masthead #primary-navigation > ul > li > a:hover {
+  background: #0a95cc;
+  color: #fff;
+  text-decoration: none;
+}
+
+
+#masthead #tools-panel {
+  float: right;
+  margin-right: 20px;
+  height: 90px;
+}
+
+#masthead #tools-panel > ul > li > a {
+  background: #12c25b;
+  line-height: 90px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  display: block;
+  border-left: 1px solid #efefef;
+  border-right: 1px solid #efefef;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+#masthead #tools-panel > ul > li > a:hover {
+  background: #0acc6b;
+  color: #fff;
+  text-decoration: none;
+}
+
+#user-primary {
+  margin-top: 50px;
+  padding: 50px;
+  width: 100%;
+}
+
+.not-found-message{
+  text-align: center;
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<!-- If configSections tag is absent -->
+	<appSettings xdt:Transform="InsertIfMissing">
+	</appSettings>
+
+	<appSettings>
+		<add key="SqlDatabaseLogsConnectionStringName" value="SqlDatabaseLogs" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+		<add key="SqlDatabaseLogsTableName" value="Logs" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+	</appSettings>
+
+	<!-- If connectionStrings tag is absent -->
+	<connectionStrings xdt:Transform="InsertIfMissing">
+	</connectionStrings>
+
+	<connectionStrings>
+		<add name="SqlDatabaseLogs" connectionString="User ID=UserId;Password=Password;Initial Catalog=Logs;Data Source=localhost; Enlist=False; Trusted_Connection=False; Connection Timeout=30; MultipleActiveResultSets=False;" providerName="System.Data.SqlClient" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)" />
+	</connectionStrings>
+</configuration>

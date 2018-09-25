@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<appSettings>
+		<add key="SqlDatabaseLogsConnectionStringName" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+		<add key="SqlDatabaseLogsTableName" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+	</appSettings>
+
+	<connectionStrings>
+		<section name="SqlDatabaseLogs" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+	</connectionStrings>
+</configuration>

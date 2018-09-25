@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<!-- If configSections tag is absent -->
+	<configSections xdt:Transform="InsertIfMissing">
+	</configSections>
+
+	<!-- If section tag is absent -->
+	<configSections>
+		<section name="LoggerSettings" type="cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection, cdmdotnet.Logging" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)" />
+	</configSections>
+
+	<!-- If LoggerSettings tag is absent -->
+	<LoggerSettings
+		EnableInfo="true"
+		EnableProgress="true"
+		EnableDebug="false"
+		EnableWarning="true"
+		EnableError="true"
+		EnableFatalError="true"
+		EnableThreadedLogging="true"
+
+		UseApplicationInsightTelemetryHelper="false"
+		UsePerformanceCounters="false"
+
+		ModuleName ="MyApplication"
+		Instance ="Server1"
+
+		EnvironmentInstance="East-US Region"
+		Environment="Production"
+		EnableThreadedLoggingOutput="true"
+
+		SqlDatabaseLogsConnectionStringName="SqlDatabaseLogs"
+		SqlDatabaseLogsTableName="Logs"
+
+		xdt:Transform="InsertIfMissing" />
+</configuration>

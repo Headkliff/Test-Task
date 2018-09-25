@@ -1,0 +1,823 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>cdmdotnet.StateManagement</name>
+    </assembly>
+    <members>
+        <member name="T:cdmdotnet.StateManagement.Basic.BasicContextItemCollectionFactory">
+            <summary />
+        </member>
+        <member name="T:cdmdotnet.StateManagement.IContextItemCollectionFactory">
+            <summary>
+            A factory to obtain instances of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> from.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.IContextItemCollectionFactory.GetGlobalContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a global context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.IContextItemCollectionFactory.GetUserContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a user context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.IContextItemCollectionFactory.GetTransientUserContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a user context that is transient with each request
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.IContextItemCollectionFactory.GetCurrentContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a current request/thread context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.IContextItemCollectionFactory.GetIncomingContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with an incoming context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.IContextItemCollectionFactory.GetOutgoingContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with an outgoing context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Basic.BasicContextItemCollectionFactory.GetGlobalContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a global context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Basic.BasicContextItemCollectionFactory.GetUserContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a user context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Basic.BasicContextItemCollectionFactory.GetTransientUserContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a user context that is transient with each request
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Basic.BasicContextItemCollectionFactory.GetCurrentContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a current request/thread context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Basic.BasicContextItemCollectionFactory.GetIncomingContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with an incoming context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Basic.BasicContextItemCollectionFactory.GetOutgoingContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with an outgoing context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.IContextCacheItemCollection">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.StateManagement.IContextCacheItemCollection.GetData(System.String)">
+            <summary>
+            Retrieves an object with the specified name from the System.Runtime.Remoting.Messaging.CallContext.
+            </summary>
+            <param name="name">The name of the item in the call context.</param>
+            <returns>
+            The object in the call context associated with the specified name.
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.IContextCacheItemCollection.SetData(System.String,System.Object,System.String,System.DateTime,System.TimeSpan)">
+            <summary>
+            Adds the specified item with expiration.
+            </summary>
+            <param name="name">The cache key used to reference the item.</param>
+            <param name="data">The item to be added to the cache.</param>
+            <param name="dependency">The file or cache key dependencies for the item. When any dependency changes, the <see cref="!:data">object</see> becomes invalid and is removed from the cache. If there are no dependencies, this parameter contains null</param>
+            <param name="absoluteExpiration">The time at which the added <see cref="!:data">object</see> expires and is removed from the cache. If you are using <see cref="!:slidingExpiration">sliding expiration</see>, the <see cref="!:absoluteExpiration"/> parameter must be System.Web.Caching.Cache.NoAbsoluteExpiration.</param>
+            <param name="slidingExpiration">The interval between the time the added <see cref="!:data">object</see> was last accessed and the time at which that <see cref="!:data">object</see> expires. If this value is the equivalent of 20 minutes, the object expires and is removed from the cache 20 minutes after it is last accessed. If you are using <see cref="!:absoluteExpiration">absolute expiration</see>, the <see cref="!:slidingExpiration"/> parameter must be System.Web.Caching.Cache.NoSlidingExpiration.</param>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.IContextItemCollection">
+            <summary>
+            A collection of items with a specific context.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.IContextItemCollection.GetData``1(System.String)">
+            <summary>
+            Retrieves an object with the specified name
+            </summary>
+            <param name="name">The name of the item.</param>
+            <returns>
+            The object associated with the specified name.
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.IContextItemCollection.SetData``1(System.String,``0)">
+            <summary>
+            Stores a given object and associates it with the specified name.
+            </summary>
+            <param name="name">The name with which to associate the new item.</param>
+            <param name="data">The object to store.</param>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Basic.DictionaryBasedContextItemCollection">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Basic.DictionaryBasedContextItemCollection.#ctor">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Basic.DictionaryBasedContextItemCollection.GetData``1(System.String)">
+            <summary>
+            Retrieves an object with the specified name
+            </summary>
+            <param name="name">The name of the item.</param>
+            <returns>
+            The object associated with the specified name.
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Basic.DictionaryBasedContextItemCollection.SetData``1(System.String,``0)">
+            <summary>
+            Stores a given object and associates it with the specified name.
+            
+            </summary>
+            <param name="name">The name with which to associate the new item.</param>
+            <param name="data">The object to store.</param>
+        </member>
+        <member name="P:cdmdotnet.StateManagement.Basic.DictionaryBasedContextItemCollection.InternalStateDictionary">
+            <summary>
+            The internal dictionary that can be manually manipulated or assessed.
+            </summary>
+        </member>
+        <member name="T:System.TaskExtensions">
+            <summary>
+            A set of extension methods to allow a much safer usage of tasks.
+            </summary>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely(System.Threading.Tasks.TaskFactory,System.Action)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely(System.Threading.Tasks.TaskFactory,System.Action,System.Threading.CancellationToken)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely(System.Threading.Tasks.TaskFactory,System.Action,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely(System.Threading.Tasks.TaskFactory,System.Action,System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely(System.Threading.Tasks.TaskFactory,System.Action{System.Object},System.Object)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely(System.Threading.Tasks.TaskFactory,System.Action{System.Object},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely(System.Threading.Tasks.TaskFactory,System.Action{System.Object},System.Object,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely(System.Threading.Tasks.TaskFactory,System.Action{System.Object},System.Object,System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely``1(System.Threading.Tasks.TaskFactory,System.Func{``0})">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely``1(System.Threading.Tasks.TaskFactory,System.Func{``0},System.Threading.CancellationToken)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely``1(System.Threading.Tasks.TaskFactory,System.Func{``0},System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely``1(System.Threading.Tasks.TaskFactory,System.Func{``0},System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely``1(System.Threading.Tasks.TaskFactory,System.Func{System.Object,``0},System.Object)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely``1(System.Threading.Tasks.TaskFactory,System.Func{System.Object,``0},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely``1(System.Threading.Tasks.TaskFactory,System.Func{System.Object,``0},System.Object,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.StartNewSafely``1(System.Threading.Tasks.TaskFactory,System.Func{System.Object,``0},System.Object,System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely(System.Threading.Tasks.TaskFactory,System.IAsyncResult,System.Action{System.IAsyncResult})">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely(System.Threading.Tasks.TaskFactory,System.IAsyncResult,System.Action{System.IAsyncResult},System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely(System.Threading.Tasks.TaskFactory,System.IAsyncResult,System.Action{System.IAsyncResult},System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely(System.Threading.Tasks.TaskFactory,System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely(System.Threading.Tasks.TaskFactory,System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``1(System.Threading.Tasks.TaskFactory,System.Func{``0,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,System.Object)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``1(System.Threading.Tasks.TaskFactory,System.Func{``0,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,System.Object,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``2(System.Threading.Tasks.TaskFactory,System.Func{``0,``1,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,``1,System.Object)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``2(System.Threading.Tasks.TaskFactory,System.Func{``0,``1,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,``1,System.Object,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``3(System.Threading.Tasks.TaskFactory,System.Func{``0,``1,``2,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,``1,``2,System.Object)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``3(System.Threading.Tasks.TaskFactory,System.Func{``0,``1,``2,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,``1,``2,System.Object,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``1(System.Threading.Tasks.TaskFactory,System.IAsyncResult,System.Func{System.IAsyncResult,``0})">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``1(System.Threading.Tasks.TaskFactory,System.IAsyncResult,System.Func{System.IAsyncResult,``0},System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``1(System.Threading.Tasks.TaskFactory,System.IAsyncResult,System.Func{System.IAsyncResult,``0},System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``1(System.Threading.Tasks.TaskFactory,System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``0},System.Object)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``1(System.Threading.Tasks.TaskFactory,System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``0},System.Object,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``2(System.Threading.Tasks.TaskFactory,System.Func{``0,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``1},``0,System.Object)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``2(System.Threading.Tasks.TaskFactory,System.Func{``0,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``1},``0,System.Object,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``3(System.Threading.Tasks.TaskFactory,System.Func{``0,``1,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``2},``0,``1,System.Object)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``3(System.Threading.Tasks.TaskFactory,System.Func{``0,``1,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``2},``0,``1,System.Object,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``4(System.Threading.Tasks.TaskFactory,System.Func{``0,``1,``2,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``3},``0,``1,``2,System.Object)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="M:System.TaskExtensions.FromAsyncSafely``4(System.Threading.Tasks.TaskFactory,System.Func{``0,``1,``2,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``3},``0,``1,``2,System.Object,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            This method will ensure all thread based storage values are copied into the <see cref="T:System.Threading.Thread"/> used by this <see cref="T:System.Threading.Tasks.Task"/>.
+            This will ensure logging and eventing will work far more smoothly.
+            </summary>
+            <remarks>Value changes will be passed back out.</remarks>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollection">
+            <summary />
+        </member>
+        <member name="T:cdmdotnet.StateManagement.ContextItemCollection">
+            <summary>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a current request context
+            </summary>
+        </member>
+        <member name="F:cdmdotnet.StateManagement.ContextItemCollection.CurrentContextKeysDictionaryName">
+            <summary>
+            An internal key used within threads.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.ContextItemCollection.GetData``1(System.String)">
+            <summary>
+            Retrieves an object with the specified <paramref name="name"/> from the internal cache.
+            </summary>
+            <param name="name">The name of the item in the internal cache.</param>
+            <returns>
+            The object in the internal cache associated with the specified name.
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.ContextItemCollection.SetData``1(System.String,``0)">
+            <summary>
+            Stores the given <paramref name="data"/> and associates it with the specified <paramref name="name"/> to the internal cache.
+            </summary>
+            <param name="name">The name with which to associate the new item in the internal cache.</param>
+            <param name="data">The object to store in the internal cache.</param>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.ContextItemCollection.GetCache">
+            <summary>
+            Access the internal cache
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollection.GetData``1(System.String)">
+            <summary>
+            Retrieves an object with the specified <paramref name="name"/> from an internal collection in <see cref="T:System.Runtime.Remoting.Messaging.CallContext"/>.
+            </summary>
+            <param name="name">The name of the item in the internal cache.</param>
+            <returns>
+            The object in the internal cache associated with the specified name.
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollection.SetData``1(System.String,``0)">
+            <summary>
+            Stores the given <paramref name="data"/> with the specified <paramref name="name"/> to an internal collection in <see cref="T:System.Runtime.Remoting.Messaging.CallContext"/>.
+            </summary>
+            <param name="name">The name with which to associate the new item in the internal cache.</param>
+            <param name="data">The object to store in the internal cache.</param>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollection.GetCache">
+            <summary>
+            Access the internal cache
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollectionFactory">
+            <summary>
+            A factory to obtain instances of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> from.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollectionFactory.GetGlobalContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a global context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollectionFactory.GetUserContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a user context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollectionFactory.GetTransientUserContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a user context that is transient with each request
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollectionFactory.GetCurrentContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a current request/thread context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollectionFactory.GetIncomingContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with an incoming context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollectionFactory.GetOutgoingContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with an outgoing context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Threaded.ThreadedContextCacheItemCollection">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Threaded.ThreadedContextCacheItemCollection.GetData(System.String)">
+            <summary>
+            Retrieves an object with the specified name from the System.Runtime.Remoting.Messaging.CallContext.
+            </summary>
+            <param name="name">The name of the item in the call context.</param>
+            <returns>
+            The object in the call context associated with the specified name.
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Threaded.ThreadedContextCacheItemCollection.SetData(System.String,System.Object,System.String,System.DateTime,System.TimeSpan)">
+            <summary>
+            Adds the specified item with expiration.
+            </summary>
+            <param name="name">The cache key used to reference the item.</param>
+            <param name="data">The item to be added to the cache.</param>
+            <param name="dependency">The file or cache key dependencies for the item. When any dependency changes, the <see cref="!:data">object</see> becomes invalid and is removed from the cache. If there are no dependencies, this parameter contains null</param>
+            <param name="absoluteExpiration">The time at which the added <see cref="!:data">object</see> expires and is removed from the cache. If you are using <see cref="!:slidingExpiration">sliding expiration</see>, the <see cref="!:absoluteExpiration"/> parameter must be System.Web.Caching.Cache.NoAbsoluteExpiration.</param>
+            <param name="slidingExpiration">The interval between the time the added <see cref="!:data">object</see> was last accessed and the time at which that <see cref="!:data">object</see> expires. If this value is the equivalent of 20 minutes, the object expires and is removed from the cache 20 minutes after it is last accessed. If you are using <see cref="!:absoluteExpiration">absolute expiration</see>, the <see cref="!:slidingExpiration"/> parameter must be System.Web.Caching.Cache.NoSlidingExpiration.</param>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Web.IWebContextCacheItemCollection">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.IWebContextCacheItemCollection.SetData(System.String,System.Object,System.Web.Caching.CacheDependency,System.DateTime,System.TimeSpan,System.Web.Caching.CacheItemPriority,System.Web.Caching.CacheItemRemovedCallback)">
+            <summary>
+            Adds the specified item to the System.Web.Caching.Cache object with dependencies, expiration and priority policies, and a delegate you can use to notify your application when the inserted item is removed from the Cache.
+            </summary>
+            <param name="name">The cache key used to reference the item.</param>
+            <param name="data">The item to be added to the cache.</param>
+            <param name="dependencies">The file or cache key dependencies for the item. When any dependency changes, the <see cref="!:data">object</see> becomes invalid and is removed from the cache. If there are no dependencies, this parameter contains null</param>
+            <param name="absoluteExpiration">The time at which the added <see cref="!:data">object</see> expires and is removed from the cache. If you are using <see cref="!:slidingExpiration">sliding expiration</see>, the <see cref="!:absoluteExpiration"/> parameter must be System.Web.Caching.Cache.NoAbsoluteExpiration.</param>
+            <param name="slidingExpiration">The interval between the time the added <see cref="!:data">object</see> was last accessed and the time at which that <see cref="!:data">object</see> expires. If this value is the equivalent of 20 minutes, the object expires and is removed from the cache 20 minutes after it is last accessed. If you are using <see cref="!:absoluteExpiration">absolute expiration</see>, the <see cref="!:slidingExpiration"/> parameter must be System.Web.Caching.Cache.NoSlidingExpiration.</param>
+            <param name="priority">The relative cost of the <see cref="!:data">object</see>, as expressed by the CacheItemPriority enumeration. The cache uses this value when it evicts objects; objects with a lower cost are removed from the cache before objects with a higher cost.</param>
+            <param name="onRemoveCallback">A delegate that, if provided, is called when an object is removed from the cache. You can use this to notify applications when their objects are deleted from the cache.</param>
+            <returns>
+            An object if the item was previously stored in the Cache; otherwise, null.
+            </returns>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Web.WebContextCacheItemCollection">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebContextCacheItemCollection.GetData(System.String)">
+            <summary>
+            Retrieves an object with the specified name from the System.Runtime.Remoting.Messaging.CallContext.
+            </summary>
+            <param name="name">The name of the item in the call context.</param>
+            <returns>
+            The object in the call context associated with the specified name.
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebContextCacheItemCollection.SetData(System.String,System.Object,System.String,System.DateTime,System.TimeSpan)">
+            <summary>
+            Adds the specified item with expiration.
+            </summary>
+            <param name="name">The cache key used to reference the item.</param>
+            <param name="data">The item to be added to the cache.</param>
+            <param name="dependency">The file or cache key dependencies for the item. When any dependency changes, the <see cref="!:data">object</see> becomes invalid and is removed from the cache. If there are no dependencies, this parameter contains null</param>
+            <param name="absoluteExpiration">The time at which the added <see cref="!:data">object</see> expires and is removed from the cache. If you are using <see cref="!:slidingExpiration">sliding expiration</see>, the <see cref="!:absoluteExpiration"/> parameter must be System.Web.Caching.Cache.NoAbsoluteExpiration.</param>
+            <param name="slidingExpiration">The interval between the time the added <see cref="!:data">object</see> was last accessed and the time at which that <see cref="!:data">object</see> expires. If this value is the equivalent of 20 minutes, the object expires and is removed from the cache 20 minutes after it is last accessed. If you are using <see cref="!:absoluteExpiration">absolute expiration</see>, the <see cref="!:slidingExpiration"/> parameter must be System.Web.Caching.Cache.NoSlidingExpiration.</param>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebContextCacheItemCollection.SetData(System.String,System.Object,System.Web.Caching.CacheDependency,System.DateTime,System.TimeSpan,System.Web.Caching.CacheItemPriority,System.Web.Caching.CacheItemRemovedCallback)">
+            <summary>
+            Adds the specified item to the System.Web.Caching.Cache object with dependencies, expiration and priority policies, and a delegate you can use to notify your application when the inserted item is removed from the Cache.
+            </summary>
+            <param name="name">The cache key used to reference the item.</param>
+            <param name="data">The item to be added to the cache.</param>
+            <param name="dependencies">The file or cache key dependencies for the item. When any dependency changes, the <see cref="!:data">object</see> becomes invalid and is removed from the cache. If there are no dependencies, this parameter contains null</param>
+            <param name="absoluteExpiration">The time at which the added <see cref="!:data">object</see> expires and is removed from the cache. If you are using <see cref="!:slidingExpiration">sliding expiration</see>, the <see cref="!:absoluteExpiration"/> parameter must be System.Web.Caching.Cache.NoAbsoluteExpiration.</param><param name="slidingExpiration">The interval between the time the added <see cref="!:data">object</see> was last accessed and the time at which that <see cref="!:data">object</see> expires. If this value is the equivalent of 20 minutes, the object expires and is removed from the cache 20 minutes after it is last accessed. If you are using <see cref="!:absoluteExpiration">absolute expiration</see>, the <see cref="!:slidingExpiration"/> parameter must be System.Web.Caching.Cache.NoSlidingExpiration.</param>
+            <param name="priority">The relative cost of the <see cref="!:data">object</see>, as expressed by the CacheItemPriority enumeration. The cache uses this value when it evicts objects; objects with a lower cost are removed from the cache before objects with a higher cost.</param>
+            <param name="onRemoveCallback">A delegate that, if provided, is called when an object is removed from the cache. You can use this to notify applications when their objects are deleted from the cache.</param>
+            <returns>
+            An object if the item was previously stored in the Cache; otherwise, null.
+            </returns>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Web.WebContextItemCollection">
+            <summary>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a current request context
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebContextItemCollection.GetData``1(System.String)">
+            <summary>
+            Retrieves an object with the specified name 
+            first using <see cref="P:System.Web.HttpContext.Items"/> if <see cref="P:System.Web.HttpContext.Current"/> is not null
+            if <see cref="P:System.Web.HttpContext.Current"/> is null OR there is a <see cref="T:System.NullReferenceException"/> then
+            trying from, within this <see cref="T:System.Threading.Thread"/>.
+            </summary>
+            <param name="name">The name of the item in the internal cache.</param>
+            <returns>
+            The object in the internal cache associated with the specified name.
+            </returns>
+            <remarks>
+            The usage of checking also checking outside of <see cref="P:System.Web.HttpContext.Items"/>, is that when you use a <see cref="T:System.Threading.Tasks.Task"/>, it has not access to <see cref="P:System.Web.HttpContext.Current"/>.
+            </remarks>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebContextItemCollection.SetData``1(System.String,``0)">
+            <summary>
+            Stores a given object and associates it with the specified name within this <see cref="T:System.Threading.Thread"/> that can be read via <see cref="M:cdmdotnet.StateManagement.Web.WebContextItemCollection.GetData``1(System.String)"/>.
+            If <see cref="P:System.Web.HttpContext.Current"/> is not null then also tries and sets it using <see cref="P:System.Web.HttpContext.Items"/>.
+            </summary>
+            <param name="name">The name with which to associate the new item in the internal cache.</param>
+            <param name="data">The object to store in the internal cache.</param>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebContextItemCollection.GetCache">
+            <summary>
+            Access the internal cache
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Web.WebContextItemCollectionFactory">
+            <summary>
+            A factory to obtain instances of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> from.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebContextItemCollectionFactory.GetGlobalContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a global context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebContextItemCollectionFactory.GetUserContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a user context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebContextItemCollectionFactory.GetTransientUserContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a user context that is transient with each request
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebContextItemCollectionFactory.GetCurrentContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a current request/thread context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebContextItemCollectionFactory.GetIncomingContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with an incoming context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebContextItemCollectionFactory.GetOutgoingContext">
+            <summary>
+            Gets an instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with an outgoing context
+            </summary>
+            <returns>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/>
+            </returns>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Web.WebGlobalContextItemCollection">
+            <summary>
+            An Instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a global context
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebGlobalContextItemCollection.GetData``1(System.String)">
+            <summary>
+            Retrieves an object with the specified name from the <see cref="T:System.Web.HttpApplicationState"/>
+            </summary>
+            <param name="name">The name of the item in the call context.</param>
+            <returns>
+            The object in the call context associated with the specified name.
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebGlobalContextItemCollection.SetData``1(System.String,``0)">
+            <summary>
+            Stores a given object and associates it with the specified name in the <see cref="T:System.Web.HttpApplicationState"/>
+            </summary>
+            <param name="name">The name with which to associate the new item in the call context.</param>
+            <param name="data">The object to store in the call context.</param>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Web.WebIncomingContextItemCollection">
+            <summary>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with an incoming context
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebIncomingContextItemCollection.GetData``1(System.String)">
+            <summary>
+            Retrieves an object with the specified name from the <see cref="T:System.Web.HttpRequest"/>.
+            </summary>
+            <param name="name">The name of the item in the call context.</param>
+            <returns>
+            The object in the call context associated with the specified name.
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebIncomingContextItemCollection.SetData``1(System.String,``0)">
+            <summary>
+            Does nothing as this is an incoming context.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Web.WebOutgoingContextItemCollection">
+            <summary>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with an outgoing context
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebOutgoingContextItemCollection.GetData``1(System.String)">
+            <summary>
+            Does nothing as this is an outgoing context.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebOutgoingContextItemCollection.SetData``1(System.String,``0)">
+            <summary>
+            Stores a given object and associates it with the specified name in the <see cref="T:System.Web.HttpResponse"/>
+            </summary>
+            <param name="name">The name with which to associate the new item in the call context.</param>
+            <param name="data">The object to store in the call context.</param>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Web.WebTransientUserContextItemCollection">
+            <summary>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a user context
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebTransientUserContextItemCollection.GetData``1(System.String)">
+            <summary>
+            Retrieves an object with the specified name from the <see cref="T:System.Web.SessionState.HttpSessionState"/>
+            </summary>
+            <param name="name">The name of the item in the call context.</param>
+            <returns>
+            The object in the call context associated with the specified name.
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebTransientUserContextItemCollection.SetData``1(System.String,``0)">
+            <summary>
+            Stores a given object and associates it with the specified name in the <see cref="T:System.Web.SessionState.HttpSessionState"/>
+            </summary>
+            <param name="name">The name with which to associate the new item in the call context.</param>
+            <param name="data">The object to store in the call context.</param>
+        </member>
+        <member name="T:cdmdotnet.StateManagement.Web.WebUserContextItemCollection">
+            <summary>
+            An instance of <see cref="T:cdmdotnet.StateManagement.IContextItemCollection"/> with a user context
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebUserContextItemCollection.GetData``1(System.String)">
+            <summary>
+            Retrieves an object with the specified name from the <see cref="T:System.Web.SessionState.HttpSessionState"/>
+            </summary>
+            <param name="name">The name of the item in the call context.</param>
+            <returns>
+            The object in the call context associated with the specified name.
+            </returns>
+        </member>
+        <member name="M:cdmdotnet.StateManagement.Web.WebUserContextItemCollection.SetData``1(System.String,``0)">
+            <summary>
+            Stores a given object and associates it with the specified name in the <see cref="T:System.Web.SessionState.HttpSessionState"/>
+            </summary>
+            <param name="name">The name with which to associate the new item in the call context.</param>
+            <param name="data">The object to store in the call context.</param>
+        </member>
+    </members>
+</doc>

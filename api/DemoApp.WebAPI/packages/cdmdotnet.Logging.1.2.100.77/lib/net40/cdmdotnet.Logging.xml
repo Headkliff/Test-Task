@@ -1,0 +1,1219 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>cdmdotnet.Logging</name>
+    </assembly>
+    <members>
+        <member name="T:cdmdotnet.Logging.Configuration.LoggerSettings">
+            <summary>
+            The settings for all <see cref="T:cdmdotnet.Logging.ILogger"/> instances reading settings <see cref="T:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection"/>.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.Configuration.ILoggerSettings">
+            <summary>
+            The settings for all <see cref="T:cdmdotnet.Logging.ILogger"/> instances.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableSensitive">
+            <summary>
+            If false <see cref="M:cdmdotnet.Logging.ILogger.LogSensitive(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> will not do anything nor log anything.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableInfo">
+            <summary>
+            If false <see cref="M:cdmdotnet.Logging.ILogger.LogInfo(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> will not do anything nor log anything.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableProgress">
+            <summary>
+            If false <see cref="M:cdmdotnet.Logging.ILogger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> will not do anything nor log anything.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableDebug">
+            <summary>
+            If false <see cref="M:cdmdotnet.Logging.ILogger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> will not do anything nor log anything.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableWarning">
+            <summary>
+            If false <see cref="M:cdmdotnet.Logging.ILogger.LogWarning(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> will not do anything nor log anything.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableError">
+            <summary>
+            If false <see cref="M:cdmdotnet.Logging.ILogger.LogError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> will not do anything nor log anything.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableFatalError">
+            <summary>
+            If false <see cref="M:cdmdotnet.Logging.ILogger.LogFatalError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> will not do anything nor log anything.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableThreadedLogging">
+            <summary>
+            If true, the <see cref="T:cdmdotnet.Logging.ILogger"/> will use one extra thread per instance to persist logs. 
+            This means the log methods like <see cref="M:cdmdotnet.Logging.ILogger.LogInfo(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> will return indicating the information is in a queue to be logged.
+            This greatly increases the performance in the event your <see cref="T:cdmdotnet.Logging.ILogger"/> is under heavy load, for example, if your logging database is under strain, your application will continue to perform, but logs will be queued.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableThreadedLoggingOutput">
+            <summary>
+            Doesn't do anything just yet
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.ModuleName">
+            <summary>
+            A friendly identifier to help identify different applications if they use the same <see cref="T:cdmdotnet.Logging.ILogger"/>.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.Instance">
+            <summary>
+            A friendly identifier to help identify different instances of the same application, such as a development or production instance of the same application.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnvironmentInstance">
+            <summary>
+            A friendly identifier to help identify different environments of the same application, such as deployments to different geo-graphical locations of the same application.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.Environment">
+            <summary />
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.SqlDatabaseLogsConnectionStringName">
+            <summary>
+            The key of the <see cref="P:System.Configuration.ConfigurationManager.AppSettings"/> item that holds the name of the connection string to use.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.SqlDatabaseTableName">
+            <summary>
+            The name of the table to use.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.UseApplicationInsightTelemetryHelper">
+            <summary>
+            If true, all log calls will be telemetered.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.ILoggerSettings.UsePerformanceCounters">
+            <summary>
+            If true, all log calls will be telemetered.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.EnableSensitive">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableSensitive"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.EnableInfo">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableInfo"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.EnableProgress">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableProgress"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.EnableDebug">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableDebug"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.EnableWarning">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableWarning"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.EnableError">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableError"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.EnableFatalError">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableFatalError"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.EnableThreadedLogging">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableThreadedLogging"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.ModuleName">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.ModuleName"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.Instance">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.Instance"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.EnvironmentInstance">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnvironmentInstance"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.Environment">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.Environment"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.SqlDatabaseLogsConnectionStringName">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.SqlDatabaseLogsConnectionStringName"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.SqlDatabaseTableName">
+            <summary>
+            The name of the table to use.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.UseApplicationInsightTelemetryHelper">
+            <summary>
+            If true, all log calls will be telemetered.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.UsePerformanceCounters">
+            <summary>
+            If true, all log calls will be telemetered.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettings.EnableThreadedLoggingOutput">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableThreadedLoggingOutput"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection">
+            <summary>
+            The settings for all <see cref="T:cdmdotnet.Logging.ILogger"/> instances reading settings from an app.config or web.config file.
+            This is used internally. Use <see cref="T:cdmdotnet.Logging.Configuration.LoggerSettings"/> directly unless you know what you're doing.
+            </summary>
+            <remarks>
+            http://haacked.com/archive/2007/03/12/custom-configuration-sections-in-3-easy-steps.aspx
+            </remarks>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.Current">
+            <summary />
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.EnableSensitive">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableSensitive"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.EnableInfo">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableInfo"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.EnableProgress">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableProgress"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.EnableDebug">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableDebug"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.EnableWarning">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableWarning"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.EnableError">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableError"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.EnableFatalError">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableFatalError"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.EnableThreadedLogging">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableThreadedLogging"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.ModuleName">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.ModuleName"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.Instance">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.Instance"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.EnvironmentInstance">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnvironmentInstance"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.Environment">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.Environment"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.SqlDatabaseLogsConnectionStringName">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.SqlDatabaseLogsConnectionStringName"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.SqlDatabaseTableName">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.SqlDatabaseTableName"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.UseApplicationInsightTelemetryHelper">
+            <summary>
+            If true, all log calls will be telemetered.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.UsePerformanceCounters">
+            <summary>
+            If true, all log calls will be telemetered.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.Configuration.LoggerSettingsConfigurationSection.EnableThreadedLoggingOutput">
+            <summary>
+            Reads the <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableThreadedLoggingOutput"/> from the <see cref="T:System.Configuration.ConfigurationSection"/> in your app.config or web.config file.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.NullTelemetryHelper">
+            <summary>
+            Does nothing but stops <see cref="T:System.NullReferenceException"/> being raised.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.ITelemetryHelper">
+            <summary>
+            Send events, metrics and other telemetry.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ITelemetryHelper.TrackEvent(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send an event.
+            </summary>
+            <param name="eventName">A name for the event.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.ITelemetryHelper.TrackMetric(System.String,System.Double,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send a metric.
+            </summary>
+            <param name="name">Metric name.</param>
+            <param name="value">Metric value.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.ITelemetryHelper.TrackException(System.Exception,System.Collections.Generic.IDictionary{System.String,System.Double},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send an Exception
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="metrics">Additional values associated with this exception.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.ITelemetryHelper.TrackDependency(System.String,System.String,System.DateTimeOffset,System.TimeSpan,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send information about an external dependency call in the application, such as a call to a database.
+            </summary>
+            <param name="dependencyName">External dependency name.</param>
+            <param name="commandName">Dependency call command name.</param>
+            <param name="startTime">The time when the dependency was called.</param>
+            <param name="duration">The time taken by the external dependency to handle the call.</param>
+            <param name="wasSuccessfull">True if the dependency call was handled successfully.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.ITelemetryHelper.TrackDependency(System.String,System.String,System.String,System.String,System.DateTimeOffset,System.TimeSpan,System.String,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send information about an external dependency call in the application, such as a web-service call
+            </summary>
+            <param name="dependencyTypeName">External dependency type.</param>
+            <param name="target">External dependency target.</param>
+            <param name="dependencyName">External dependency name.</param>
+            <param name="data">Dependency call command name.</param>
+            <param name="startTime">The time when the dependency was called.</param>
+            <param name="duration">The time taken by the external dependency to handle the call.</param>
+            <param name="resultCode">Result code of dependency call execution.</param>
+            <param name="wasSuccessfull">True if the dependency call was handled successfully.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.ITelemetryHelper.TrackRequest(System.String,System.DateTimeOffset,System.TimeSpan,System.String,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send information about a request handled by the application.
+            </summary>
+            <param name="name">The request name.</param>
+            <param name="startTime">The time when the page was requested.</param>
+            <param name="duration">The time taken by the application to handle the request.</param>
+            <param name="responseCode">The response status code.</param>
+            <param name="wasSuccessfull">True if the request was handled successfully by the application.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.ITelemetryHelper.TrackRequest(System.String,System.Uri,System.String,System.DateTimeOffset,System.TimeSpan,System.String,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String},System.String)">
+            <summary>
+            Send information about a request handled by the application.
+            </summary>
+            <param name="name">The request name.</param>
+            <param name="url"></param>
+            <param name="userId">The ID of user accessing the application.</param>
+            <param name="startTime">The time when the page was requested.</param>
+            <param name="duration">The time taken by the application to handle the request.</param>
+            <param name="responseCode">The response status code.</param>
+            <param name="wasSuccessfull">True if the request was handled successfully by the application.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+            <param name="sessionId">The application-defined session ID.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.ITelemetryHelper.Flush">
+            <summary>
+            Flushes the in-memory buffer, if one exists
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.NullTelemetryHelper.TrackEvent(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send an event.
+            </summary>
+            <param name="eventName">A name for the event.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.NullTelemetryHelper.TrackMetric(System.String,System.Double,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send a metric.
+            </summary>
+            <param name="name">Metric name.</param>
+            <param name="value">Metric value.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.NullTelemetryHelper.TrackException(System.Exception,System.Collections.Generic.IDictionary{System.String,System.Double},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send an Exception
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="metrics">Additional values associated with this exception.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.NullTelemetryHelper.TrackDependency(System.String,System.String,System.DateTimeOffset,System.TimeSpan,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send information about an external dependency call in the application, such as a call to a database.
+            </summary>
+            <param name="dependencyName">External dependency name.</param>
+            <param name="commandName">Dependency call command name.</param>
+            <param name="startTime">The time when the dependency was called.</param>
+            <param name="duration">The time taken by the external dependency to handle the call.</param>
+            <param name="wasSuccessfull">True if the dependency call was handled successfully.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.NullTelemetryHelper.TrackDependency(System.String,System.String,System.String,System.String,System.DateTimeOffset,System.TimeSpan,System.String,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send information about an external dependency call in the application, such as a web-service call
+            </summary>
+            <param name="dependencyTypeName">External dependency type.</param>
+            <param name="target">External dependency target.</param>
+            <param name="dependencyName">External dependency name.</param>
+            <param name="data">Dependency call command name.</param>
+            <param name="startTime">The time when the dependency was called.</param>
+            <param name="duration">The time taken by the external dependency to handle the call.</param>
+            <param name="resultCode">Result code of dependency call execution.</param>
+            <param name="wasSuccessfull">True if the dependency call was handled successfully.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.NullTelemetryHelper.TrackRequest(System.String,System.DateTimeOffset,System.TimeSpan,System.String,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Send information about a request handled by the application.
+            </summary>
+            <param name="name">The request name.</param>
+            <param name="startTime">The time when the page was requested.</param>
+            <param name="duration">The time taken by the application to handle the request.</param>
+            <param name="responseCode">The response status code.</param>
+            <param name="wasSuccessfull">True if the request was handled successfully by the application.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.NullTelemetryHelper.TrackRequest(System.String,System.Uri,System.String,System.DateTimeOffset,System.TimeSpan,System.String,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String},System.String)">
+            <summary>
+            Send information about a request handled by the application.
+            </summary>
+            <param name="name">The request name.</param>
+            <param name="url"></param>
+            <param name="userId">The ID of user accessing the application.</param>
+            <param name="startTime">The time when the page was requested.</param>
+            <param name="duration">The time taken by the application to handle the request.</param>
+            <param name="responseCode">The response status code.</param>
+            <param name="wasSuccessfull">True if the request was handled successfully by the application.</param>
+            <param name="properties">Named string values you can use to search and classify events.</param>
+            <param name="sessionId">The application-defined session ID.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.NullTelemetryHelper.Flush">
+            <summary>
+            Flushes the in-memory buffer, if one exists
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.VeryPrimitiveLogger">
+            <summary>
+            Provides a set of methods that help you log events relating to the execution of your code.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.ILogger">
+            <summary>
+            Provides a set of methods that help you log events relating to the execution of your code.
+            The <see cref="T:System.Collections.Generic.IDictionary`2">additionalData</see> parameter generally will map to something like a column is using a <see cref="T:cdmdotnet.Logging.DatabaseLogger"/> using the TKey as the column name and the TValue asn the column value
+            Or TKey as the property name and the TValue asn the property value.
+            The <see cref="T:System.Collections.Generic.IDictionary`2">metaData</see> Will be serialised to a JSON string and if using a <see cref="T:cdmdotnet.Logging.DatabaseLogger"/> logging will be stored to a column named 'MetaData'.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ILogger.LogSensitive(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            This is for logging sensitive information,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            Depending on the implementation this won't be obscured or encrypted in anyway. Use this sparingly.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ILogger.LogInfo(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            This is for logging general information, effectively the least amount of information you'd want to know about a system operation,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            Don't abuse this as you will flood the logs as this would normally never turned off. Use <see cref="M:cdmdotnet.Logging.ILogger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> or <see cref="M:cdmdotnet.Logging.ILogger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> for reporting additional information.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ILogger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes logging progress information such as "Process X is 24% done"
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ILogger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes diagnostic information 
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ILogger.LogWarning(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes warnings, something not yet an error, but something to watch out for,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ILogger.LogError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes errors, something handled and to be investigated,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ILogger.LogFatalError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes fatal errors that have a detrimental effect on the system,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.ILogger.LoggerSettings">
+            <summary>
+            The <see cref="T:cdmdotnet.Logging.Configuration.ILoggerSettings"/> for the instance, set during instantiation.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.VeryPrimitiveLogger.#ctor(cdmdotnet.Logging.Configuration.ILoggerSettings,cdmdotnet.Logging.ICorrelationIdHelper,cdmdotnet.Logging.ITelemetryHelper)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.StringLogger"/> class.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.VeryPrimitiveLogger.Log(System.Action,System.String,System.String)">
+            <summary>
+            Format a message based on the input parameters to be sent to <paramref name="logAction"></paramref>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.VeryPrimitiveLogger.CreateActionInfo(System.String,System.String)">
+            <summary>
+            Helper method to create the ActionInfo object containing the info about the action that is getting called
+            </summary>
+            <returns>An ActionInfo object that contains all the information pertaining to what action is being executed</returns>
+        </member>
+        <member name="M:cdmdotnet.Logging.VeryPrimitiveLogger.PersistLogWithPerformanceTracking(System.Action,System.String,System.String)">
+            <summary>
+            Added performance counters to persistence.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.VeryPrimitiveLogger.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.VeryPrimitiveLogger.LogSensitive(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            This is for logging sensitive information,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            Depending on the implementation this won't be obscured or encrypted in anyway. Use this sparingly.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.VeryPrimitiveLogger.LogInfo(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            This is for logging general information, effectively the least amount of information you'd want to know about a system operation,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            Don't abuse this as you will flood the logs as this would normally never turned off. Use <see cref="M:cdmdotnet.Logging.ILogger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> or <see cref="M:cdmdotnet.Logging.ILogger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> for reporting additional information.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.VeryPrimitiveLogger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes logging progress information such as "Process X is 24% done"
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.VeryPrimitiveLogger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes diagnostic information 
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.VeryPrimitiveLogger.LogWarning(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes warnings, something not yet an error, but something to watch out for,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.VeryPrimitiveLogger.LogError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes errors, something handled and to be investigated,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.VeryPrimitiveLogger.LogFatalError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes fatal errors that have a detrimental effect on the system,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.VeryPrimitiveLogger.TelemetryHelper">
+            <summary>
+            The <see cref="T:cdmdotnet.Logging.ITelemetryHelper"/> for the instance, set during Instantiation
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.VeryPrimitiveLogger.LoggerSettings">
+            <summary>
+            The <see cref="T:cdmdotnet.Logging.Configuration.ILoggerSettings"/> for the instance, set during Instantiation
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.VeryPrimitiveLogger.CorrelationIdHelper">
+            <summary>
+            The <see cref="T:cdmdotnet.Logging.ICorrelationIdHelper"/> for the instance, set during Instantiation
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.VeryPrimitiveLogger.ExclusionNamespaces">
+            <summary>
+            A list of namespaces to exclude when trying to automatically determine the container.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.VeryPrimitiveLogger.EnableThreadedLoggingOutput">
+            <summary />
+        </member>
+        <member name="T:cdmdotnet.Logging.MultiLogger">
+            <summary>
+            A <see cref="T:cdmdotnet.Logging.ILogger"/> that has several <see cref="T:cdmdotnet.Logging.ILogger"/> instances inside it that will get logs sent to.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger.#ctor">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.MultiLogger"/> class.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger.Log(System.Action{cdmdotnet.Logging.ILogger})">
+            <summary>
+            Puts the message to log into a set of <see cref="T:System.Threading.Tasks.Task"/> one for each internal logger.
+            </summary>
+            <param name="logAction"></param>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger.LogSensitive(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            This is for logging sensitive information,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            Depending on the implementation this won't be obscured or encrypted in anyway. Use this sparingly.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger.LogInfo(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            This is for logging general information, effectively the least amount of information you'd want to know about a system operation,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            Don't abuse this as you will flood the logs as this would normally never turned off. Use <see cref="M:cdmdotnet.Logging.ILogger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> or <see cref="M:cdmdotnet.Logging.ILogger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> for reporting additional information.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes logging progress information such as "Process X is 24% done"
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes diagnostic information 
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger.LogWarning(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes warnings, something not yet an error, but something to watch out for,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger.LogError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes errors, something handled and to be investigated,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger.LogFatalError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes fatal errors that have a detrimental effect on the system,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.MultiLogger.Loggers">
+            <summary>
+            The internal loggers to log to.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.MultiLogger.LoggerSettings">
+            <summary>
+            The <see cref="T:cdmdotnet.Logging.Configuration.ILoggerSettings"/> for the instance, set during instantiation.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.MultiLogger`1">
+            <summary>
+            A <see cref="T:cdmdotnet.Logging.ILogger"/> that has several <see cref="T:cdmdotnet.Logging.ILogger"/> instances inside it that will get logs sent to.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger`1.#ctor(`0)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.MultiLogger"/> class.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.MultiLogger`2">
+            <summary>
+            A <see cref="T:cdmdotnet.Logging.ILogger"/> that has several <see cref="T:cdmdotnet.Logging.ILogger"/> instances inside it that will get logs sent to.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger`2.#ctor(`0,`1)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.MultiLogger"/> class.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.MultiLogger`3">
+            <summary>
+            A <see cref="T:cdmdotnet.Logging.ILogger"/> that has several <see cref="T:cdmdotnet.Logging.ILogger"/> instances inside it that will get logs sent to.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger`3.#ctor(`0,`1,`2)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.MultiLogger"/> class.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.MultiLogger`4">
+            <summary>
+            A <see cref="T:cdmdotnet.Logging.ILogger"/> that has several <see cref="T:cdmdotnet.Logging.ILogger"/> instances inside it that will get logs sent to.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger`4.#ctor(`0,`1,`2,`3)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.MultiLogger"/> class.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.MultiLogger`5">
+            <summary>
+            A <see cref="T:cdmdotnet.Logging.ILogger"/> that has several <see cref="T:cdmdotnet.Logging.ILogger"/> instances inside it that will get logs sent to.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.MultiLogger`5.#ctor(`0,`1,`2,`3,`4)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.MultiLogger"/> class.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.PrimitiveLogger">
+            <summary>
+            Provides a set of methods that help you log events relating to the execution of your code.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.PrimitiveLogger.#ctor(cdmdotnet.Logging.Configuration.ILoggerSettings,cdmdotnet.Logging.ICorrelationIdHelper,cdmdotnet.Logging.ITelemetryHelper)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.StringLogger"/> class.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.PrimitiveLogger.GenerateLogMessage(System.String,System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Format a message based on the input parameters.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.StringLogger">
+            <summary>
+            Provides a set of methods that help you log events relating to the execution of your code when using persistence that is single string based, like a file, event log or tracer.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.#ctor(cdmdotnet.Logging.Configuration.ILoggerSettings,cdmdotnet.Logging.ICorrelationIdHelper,cdmdotnet.Logging.ITelemetryHelper)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.StringLogger"/> class.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogSensitive(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            This is for logging sensitive information,
+            to <see cref="M:cdmdotnet.Logging.StringLogger.LogInfoString(System.String)"/>
+            Depending on the implementation this won't be obscured or encrypted in anyway. Use this sparingly.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogInfo(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            This is for logging general information, effectively the least amount of information you'd want to know about a system operation,
+            to <see cref="M:cdmdotnet.Logging.StringLogger.LogInfoString(System.String)"/>
+            Don't abuse this as you will flood the logs as this would normally never turned off. Use <see cref="M:cdmdotnet.Logging.StringLogger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> or <see cref="M:cdmdotnet.Logging.StringLogger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> for reporting additional information.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes logging progress information such as "Process X is 24% done"
+            to <see cref="M:cdmdotnet.Logging.StringLogger.LogInfoString(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes diagnostic information 
+            to <see cref="M:cdmdotnet.Logging.StringLogger.LogDebugString(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogWarning(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes warnings, something not yet an error, but something to watch out for,
+            to <see cref="M:cdmdotnet.Logging.StringLogger.LogWarningString(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes errors, something handled and to be investigated,
+            to <see cref="M:cdmdotnet.Logging.StringLogger.LogErrorString(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogFatalError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes fatal errors that have a detrimental effect on the system,
+            to <see cref="M:cdmdotnet.Logging.StringLogger.LogFatalErrorString(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.Log(System.String,System.Action{System.String},System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Format a message based on the input parameters to be sent to <paramref name="logAction"></paramref>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogSensitiveString(System.String)">
+            <summary>
+            Writes sensitive information to the string based logger.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogInfoString(System.String)">
+            <summary>
+            Writes an informational message to the string based logger.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogProgressString(System.String)">
+            <summary>
+            Writes logging progress information such as "Process X is 24% done" to the string based logger.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogDebugString(System.String)">
+            <summary>
+            Writes a debugging message to the string based logger.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogWarningString(System.String)">
+            <summary>
+            Writes a warning message to the string based logger.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogErrorString(System.String)">
+            <summary>
+            Writes an error message to the string based logger.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.StringLogger.LogFatalErrorString(System.String)">
+            <summary>
+            Writes a fatal error message to the string based logger.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.SqlLogger">
+            <summary>
+            Provides a set of methods that help you log events relating to the execution of your code outputting to a SqlServer database.
+            </summary>
+            <remarks>
+            If the table created is not suitable, override the methods that generate the sql statements.
+            </remarks>
+        </member>
+        <member name="T:cdmdotnet.Logging.DatabaseLogger">
+            <summary>
+            Provides a set of methods that help you log events relating to the execution of your code outputting to a database
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.Logger">
+            <summary>
+            Provides a set of methods that help you log events relating to the execution of your code.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.Logger.#ctor(cdmdotnet.Logging.Configuration.ILoggerSettings,cdmdotnet.Logging.ICorrelationIdHelper,cdmdotnet.Logging.ITelemetryHelper)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.Logger"/> class preparing the required thread pool polling if <see cref="P:cdmdotnet.Logging.Configuration.ILoggerSettings.EnableThreadedLogging"/> is set to true.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.Logger.LogSensitive(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            This is for logging sensitive information,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            Depending on the implementation this won't be obscured or encrypted in anyway. Use this sparingly.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.Logger.LogInfo(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            This is for logging general information, effectively the least amount of information you'd want to know about a system operation,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            Don't abuse this as you will flood the logs as this would normally never turned off. Use <see cref="M:cdmdotnet.Logging.Logger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> or <see cref="M:cdmdotnet.Logging.Logger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> for reporting additional information.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.Logger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes logging progress information such as "Process X is 24% done"
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.Logger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes diagnostic information 
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.Logger.LogWarning(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes warnings, something not yet an error, but something to watch out for,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.Logger.LogError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes errors, something handled and to be investigated,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.Logger.LogFatalError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes fatal errors that have a detrimental effect on the system,
+            to the <see cref="T:cdmdotnet.Logging.ILogger"/> using the specified <paramref name="message"></paramref>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.Logger.Log(System.String,System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.Logging.Logger.PersistLog(cdmdotnet.Logging.LogInformation)">
+            <summary>
+            Persists (or saves) the provided <paramref name="logInformation"></paramref> to the database
+            </summary>
+            <param name="logInformation">The <see cref="T:cdmdotnet.Logging.LogInformation"/> holding all the information you want to persist (save) to the database.</param>
+        </member>
+        <member name="P:cdmdotnet.Logging.Logger.DefaultJsonSerializerSettings">
+            <summary>
+            Default settings used to serialise objects for storage
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.DatabaseLogger.#ctor(cdmdotnet.Logging.Configuration.ILoggerSettings,cdmdotnet.Logging.ICorrelationIdHelper,cdmdotnet.Logging.ITelemetryHelper)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.DatabaseLogger"/> class calling the constructor on <see cref="T:cdmdotnet.Logging.Logger"/>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.DatabaseLogger.GetSqlConnectionString">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.Logging.DatabaseLogger.GetDbConnection(System.String)">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.Logging.DatabaseLogger.GetCommand">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.Logging.DatabaseLogger.GetWriteTransaction(System.Data.IDbConnection)">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.Logging.DatabaseLogger.PersistLog(cdmdotnet.Logging.LogInformation)">
+            <summary>
+            Persists (or saves) the provided <paramref name="logInformation"></paramref> to the database
+            </summary>
+            <param name="logInformation">The <see cref="T:cdmdotnet.Logging.LogInformation"/> holding all the information you want to persist (save) to the database.</param>
+        </member>
+        <member name="M:cdmdotnet.Logging.DatabaseLogger.CreateTable">
+            <summary>
+            Creates the required table for storing logs in
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.DatabaseLogger.GetInsertStatement">
+            <summary>
+            Something similar to
+            INSERT INTO Logs
+            (Logs.Raised, Logs.Level, Logs.Module, Logs.Instance, Logs.Environment, Logs.EnvironmentInstance, Logs.CorrelationId, Logs.Message, Logs.Container, Logs.Exception)
+            VALUES
+            (@Raised, @Level, @Module, @Instance, @Environment, @EnvironmentInstance, @CorrelationId,@Message, @Container, @Exception);
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.DatabaseLogger.GetCreateTableStatement">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.Logging.SqlLogger.#ctor(cdmdotnet.Logging.Configuration.ILoggerSettings,cdmdotnet.Logging.ICorrelationIdHelper,cdmdotnet.Logging.ITelemetryHelper)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.DatabaseLogger"/> class calling the constructor on <see cref="T:cdmdotnet.Logging.DatabaseLogger"/>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.SqlLogger.#ctor(cdmdotnet.Logging.Configuration.ILoggerSettings,cdmdotnet.Logging.ICorrelationIdHelper,System.Boolean)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.DatabaseLogger"/> class calling the constructor on <see cref="T:cdmdotnet.Logging.DatabaseLogger"/>.
+            This will attempt to create the table in the database if not yet created and <paramref name="createTable"/> is true.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.SqlLogger.GetDbConnection(System.String)">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.Logging.SqlLogger.GetCommand">
+            <summary />
+        </member>
+        <member name="M:cdmdotnet.Logging.SqlLogger.GetWriteTransaction(System.Data.IDbConnection)">
+            <summary />
+        </member>
+        <member name="T:cdmdotnet.Logging.WebCorrelationIdHelper">
+            <summary>
+            A <see cref="T:cdmdotnet.Logging.ICorrelationIdHelper"/> that uses the <see cref="M:cdmdotnet.StateManagement.Web.WebContextItemCollectionFactory.GetCurrentContext"/> method to get a transport collection within the <see cref="T:System.Threading.Thread"/>.
+            </summary>
+            <remarks>https://dzimchuk.net/event-correlation-in-application-insights/</remarks>
+        </member>
+        <member name="T:cdmdotnet.Logging.CorrelationIdHelper">
+            <summary>
+            A <see cref="T:cdmdotnet.Logging.ICorrelationIdHelper"/> that uses the <see cref="M:cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollectionFactory.GetCurrentContext"/> method to get a transport collection within the <see cref="T:System.Threading.Thread"/>.
+            </summary>
+            <remarks>https://dzimchuk.net/event-correlation-in-application-insights/</remarks>
+        </member>
+        <member name="T:cdmdotnet.Logging.ICorrelationIdHelper">
+            <summary>
+            A CorrelationId is an identifier used to group together logs. This helper manages passing the value within the <see cref="T:System.Threading.Thread"/> without having to manually set it on ever call to the <see cref="T:cdmdotnet.Logging.ILogger"/>.
+            </summary>
+            <remarks>https://dzimchuk.net/event-correlation-in-application-insights/</remarks>
+        </member>
+        <member name="M:cdmdotnet.Logging.ICorrelationIdHelper.GetCorrelationId">
+            <summary>
+            Get the CorrelationId set via <see cref="M:cdmdotnet.Logging.ICorrelationIdHelper.SetCorrelationId(System.Guid)"/> within this <see cref="T:System.Threading.Thread"/>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ICorrelationIdHelper.SetCorrelationId(System.Guid)">
+            <summary>
+            Set the CorrelationId within this <see cref="T:System.Threading.Thread"/> that can be read via <see cref="M:cdmdotnet.Logging.ICorrelationIdHelper.GetCorrelationId"/>.
+            </summary>
+        </member>
+        <member name="F:cdmdotnet.Logging.CorrelationIdHelper.CallContextCorrelationIdValueKey">
+            <summary>
+            The key used in the internal collection to find the CorrelationId value by.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.CorrelationIdHelper.#ctor(cdmdotnet.StateManagement.IContextItemCollection)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.CorrelationIdHelper"/> class using the provided <paramref name="contextItemCollection"/> to set as the value of <see cref="P:cdmdotnet.Logging.CorrelationIdHelper.ContextItemCollection"/>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.CorrelationIdHelper.#ctor(cdmdotnet.StateManagement.Threaded.ThreadedContextItemCollectionFactory)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.CorrelationIdHelper"/> class requiring <paramref name="contextItemCollectionFactory"/>, used to set <see cref="P:cdmdotnet.Logging.CorrelationIdHelper.ContextItemCollection"/> with an instance.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.CorrelationIdHelper.GetCorrelationId">
+            <summary>
+            Get the CorrelationId set via <see cref="M:cdmdotnet.Logging.CorrelationIdHelper.SetCorrelationId(System.Guid)"/> 
+            first using <see cref="P:System.Web.HttpContext.Items"/> if <see cref="P:System.Web.HttpContext.Current"/> is not null
+            if <see cref="P:System.Web.HttpContext.Current"/> is null OR there is a <see cref="T:System.NullReferenceException"/> then
+            try from, within this <see cref="T:System.Threading.Thread"/>.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.CorrelationIdHelper.SetCorrelationId(System.Guid)">
+            <summary>
+            Set the CorrelationId within this <see cref="T:System.Threading.Thread"/> that can be read via <see cref="M:cdmdotnet.Logging.CorrelationIdHelper.GetCorrelationId"/>.
+            If <see cref="P:System.Web.HttpContext.Current"/> is not null then also try and set it using <see cref="P:System.Web.HttpContext.Items"/>.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.CorrelationIdHelper.ContextItemCollection">
+            <summary>
+            The local collection that holds values.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.WebCorrelationIdHelper.#ctor(cdmdotnet.StateManagement.Web.WebContextItemCollectionFactory)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.WebCorrelationIdHelper"/> class requiring <paramref name="contextItemCollectionFactory"/>, used to set the internal collection with an instance.
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.TraceLogger">
+            <summary>
+            Provides a set of methods that help you log events relating to the execution of your code outputting to <see cref="T:System.Diagnostics.Trace"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.TraceLogger.#ctor(cdmdotnet.Logging.Configuration.ILoggerSettings,cdmdotnet.Logging.ICorrelationIdHelper,cdmdotnet.Logging.ITelemetryHelper)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.TraceLogger"/> class.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.TraceLogger.LogSensitiveString(System.String)">
+            <summary>
+            Writes sensitive information to <see cref="M:System.Diagnostics.Trace.TraceInformation(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.TraceLogger.LogInfoString(System.String)">
+            <summary>
+            Writes an informational message to <see cref="M:System.Diagnostics.Trace.TraceInformation(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.TraceLogger.LogProgressString(System.String)">
+            <summary>
+            Writes logging progress information such as "Process X is 24% done" to <see cref="M:System.Diagnostics.Trace.TraceInformation(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.TraceLogger.LogDebugString(System.String)">
+            <summary>
+            Writes a debugging message to <see cref="M:System.Diagnostics.Trace.TraceInformation(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.TraceLogger.LogWarningString(System.String)">
+            <summary>
+            Writes a warning message to <see cref="M:System.Diagnostics.Trace.TraceWarning(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.TraceLogger.LogErrorString(System.String)">
+            <summary>
+            Writes an error message to <see cref="M:System.Diagnostics.Trace.TraceError(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.TraceLogger.LogFatalErrorString(System.String)">
+            <summary>
+            Writes a fatal error message to <see cref="M:System.Diagnostics.Trace.TraceError(System.String)"/>
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.ConsoleLogger">
+            <summary>
+            Provides a set of methods that help you log events relating to the execution of your code outputting to the <see cref="T:System.Console"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ConsoleLogger.#ctor(cdmdotnet.Logging.Configuration.ILoggerSettings,cdmdotnet.Logging.ICorrelationIdHelper,cdmdotnet.Logging.ITelemetryHelper)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.ConsoleLogger"/> class.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ConsoleLogger.LogSensitive(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            This is for logging sensitive information,
+            to the <see cref="T:System.Console"/> in <see cref="F:System.ConsoleColor.Gray"/>
+            Depending on the implementation this won't be obscured or encrypted in anyway. Use this sparingly.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ConsoleLogger.LogInfo(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            This is for logging general information, effectively the least amount of information you'd want to know about a system operation,
+            to the <see cref="T:System.Console"/> in <see cref="F:System.ConsoleColor.Gray"/>
+            Don't abuse this as you will flood the logs as this would normally never turned off. Use <see cref="M:cdmdotnet.Logging.ConsoleLogger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> or <see cref="M:cdmdotnet.Logging.ConsoleLogger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})"/> for reporting additional information.
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ConsoleLogger.LogProgress(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes logging progress information such as "Process X is 24% done"
+            to the <see cref="T:System.Console"/> in <see cref="F:System.ConsoleColor.Gray"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ConsoleLogger.LogDebug(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes diagnostic information 
+            to the <see cref="T:System.Console"/> in <see cref="F:System.ConsoleColor.Blue"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ConsoleLogger.LogWarning(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes warnings, something not yet an error, but something to watch out for,
+            to the <see cref="T:System.Console"/> in <see cref="F:System.ConsoleColor.DarkYellow"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ConsoleLogger.LogError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes errors, something handled and to be investigated,
+            to the <see cref="T:System.Console"/> in <see cref="F:System.ConsoleColor.DarkRed"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ConsoleLogger.LogFatalError(System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes fatal errors that have a detrimental effect on the system,
+            to the <see cref="T:System.Console"/> in <see cref="F:System.ConsoleColor.Red"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.ConsoleLogger.Log(System.String,System.ConsoleColor,System.String,System.String,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Format a message based on the input parameters to be sent to the <see cref="T:System.Console"/>
+            </summary>
+        </member>
+        <member name="T:cdmdotnet.Logging.NullCorrelationIdHelper">
+            <summary>
+            Always returns <see cref="F:System.Guid.Empty"/>
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.NullCorrelationIdHelper.GetCorrelationId">
+            <summary>
+            Does nothing
+            </summary>
+            <returns><see cref="F:System.Guid.Empty"/></returns>
+        </member>
+        <member name="M:cdmdotnet.Logging.NullCorrelationIdHelper.SetCorrelationId(System.Guid)">
+            <summary>
+            Returns <see cref="F:System.Guid.Empty"/>
+            </summary>
+            <returns><see cref="F:System.Guid.Empty"/></returns>
+        </member>
+        <member name="T:cdmdotnet.Logging.LogInformation">
+            <summary>
+            Information about an event to be logged
+            </summary>
+        </member>
+        <member name="M:cdmdotnet.Logging.LogInformation.#ctor">
+            <summary>
+            Instantiates a new instance of the <see cref="T:cdmdotnet.Logging.LogInformation"/> class with <see cref="P:cdmdotnet.Logging.LogInformation.Raised"/> set to a default value of <see cref="P:System.DateTime.UtcNow"/>
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.LogInformation.Raised">
+            <summary>
+            The <see cref="T:System.DateTime"/> the event was raised.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.LogInformation.Level">
+            <summary>
+            The level of the event, such as 'error', 'info' or 'debug'
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.LogInformation.Message">
+            <summary>
+            A Human readable message describing the event
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.LogInformation.Container">
+            <summary>
+            The container such as a method or class the event was raised from
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.LogInformation.Exception">
+            <summary>
+            A serialised <see cref="P:cdmdotnet.Logging.LogInformation.Exception"/> if one was provided.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.LogInformation.AdditionalData">
+            <summary>
+            An un-serialised <see cref="T:System.Collections.Generic.IDictionary`2"/> if one was provided.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.LogInformation.MetaData">
+            <summary>
+            A serialised <see cref="T:System.Collections.Generic.IDictionary`2"/> if one was provided.
+            </summary>
+        </member>
+        <member name="P:cdmdotnet.Logging.LogInformation.CorrolationId">
+            <summary>
+            The value from <see cref="M:cdmdotnet.Logging.ICorrelationIdHelper.GetCorrelationId"/>
+            </summary>
+        </member>
+    </members>
+</doc>
